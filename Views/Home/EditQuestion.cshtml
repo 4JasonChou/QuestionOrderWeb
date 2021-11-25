@@ -1,0 +1,116 @@
+@model EditQuestionViewModel
+@{
+    ViewData["Title"] = "EditQuestionPage";
+}
+<!-- Start JavaScript -->
+<script type="text/javascript">
+function SubmitInputInfoHandler()
+{
+    var checkResult = SubmitInputInfoCheck();
+    if ( checkResult == false )
+    {
+        return;
+    }
+    $("form").submit();
+}
+function SubmitInputInfoCheck()
+{
+    var res = true;
+    var tmpTitle = document.getElementById("EditorTitle").value ; 
+    var tmpDes = document.getElementById("EditorDes").value ;
+    if( tmpTitle == '' || tmpTitle == null )
+    {
+      document.getElementById("EditorTitle").style.borderColor = "red"
+      res = false;
+    }
+    if( tmpDes == '' || tmpDes == null )
+    {
+      document.getElementById("EditorDes").style.borderColor = "red"
+      res = false;
+    }
+    return res;
+}
+</script>
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-controller="Home" asp-action="Update" method="post">
+
+@if( Model.LoginInfo.AuthNumebr == 2 )
+{
+    <div class="mb-3">
+    <label for="Type" class="form-label">Type</label>
+    @Html.EditorFor(m => m.QuestionInfo.Type , new { htmlAttributes = new { @class = "form-control" , @readonly="readonly" }} )
+    </div>
+    <div class="mb-3">
+    <label for="Level" class="form-label">Level</label>
+    @Html.EditorFor(m => m.QuestionInfo.Level, new { htmlAttributes = new { @class = "form-control" , @readonly="readonly" }} )
+    </div>
+    <div class="mb-3">
+    <label for="Priority" class="form-label">Priority</label>
+    @Html.EditorFor(m => m.QuestionInfo.Prio, new { htmlAttributes = new { @class = "form-control" , @readonly="readonly" }} )
+    </div>
+    <div class="mb-3">
+    <label for="Title" class="form-label">Title</label>
+    @Html.EditorFor(m => m.QuestionInfo.Title, new { htmlAttributes = new { @class = "form-control"  , @id = "EditorTitle" , @readonly="readonly" }} )
+    </div>
+    <div class="mb-3">
+    <label for="Des" class="form-label">Des</label>
+    @Html.TextAreaFor(m => m.QuestionInfo.Des , new { @class = "form-control" , @rows="5" , @id = "EditorDes" } )
+    </div>
+    <div class="mb-3">
+    <label for="Status" class="form-label">Status</label>
+    @{
+        List<SelectListItem> items = (List<SelectListItem>)ViewBag.RoleItem;
+        @Html.DropDownListFor( m => m.QuestionInfo.Status , items, new { @class = "form-control" })
+    }
+    </div>
+}
+else
+{
+    <div class="mb-3">
+    <label for="Type" class="form-label">Type</label>
+    @{
+        List<SelectListItem> typeItems = (List<SelectListItem>)ViewBag.TypeItem;
+        @Html.DropDownListFor( m => m.QuestionInfo.Type , typeItems, new { @class = "form-control" })
+    }
+    </div>
+    <div class="mb-3">
+    <label for="Level" class="form-label">Level</label>
+    @{
+        List<SelectListItem> levelItems = (List<SelectListItem>)ViewBag.LevelItem;
+        @Html.DropDownListFor( m => m.QuestionInfo.Level , levelItems, new { @class = "form-control" })
+    }
+    </div>
+    <div class="mb-3">
+    <label for="Priority" class="form-label">Priority</label>
+    @{
+        List<SelectListItem> prioItems = (List<SelectListItem>)ViewBag.PrioItem;
+        @Html.DropDownListFor( m => m.QuestionInfo.Prio , prioItems, new { @class = "form-control" })
+    }
+    </div>
+    <div class="mb-3">
+    <label for="Title" class="form-label">Title</label>
+    @Html.EditorFor(m => m.QuestionInfo.Title, new { htmlAttributes = new { @class = "form-control" , @id = "EditorTitle"} })
+    </div>
+    <div class="mb-3">
+    <label for="Des" class="form-label">Des</label>
+    @Html.TextAreaFor(m => m.QuestionInfo.Des , new { @class = "form-control" , @rows="5" , @id = "EditorDes"} )
+    </div>
+    <div class="mb-3">
+    <label for="Status" class="form-label">Status</label>
+    @{
+        List<SelectListItem> items = (List<SelectListItem>)ViewBag.RoleItem;
+        @Html.DropDownListFor( m => m.QuestionInfo.Status , items, new { @class = "form-control" })
+    }
+    </div>
+
+}
+</form>
+<input class="btn btn-primary" type="button" value="Submit" onclick="SubmitInputInfoHandler()">
+
+
+
+
+
+  

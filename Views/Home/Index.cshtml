@@ -1,0 +1,71 @@
+﻿@model IndexViewModel
+
+@{
+    ViewData["Title"] = "QuestionOrder";
+}
+@using (Html.BeginForm())
+{
+@Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    
+    @if (  Model != null )
+    {
+        <div class="text-center">
+        <h1 class="display-4">Welcome @Html.DisplayFor(m => m.LoginInfo.UserName)</h1>
+        </div>
+        <hr />
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                <th>Type</th>
+                <th>Prio</th>
+                <th>Level</th>
+                <th>Title</th>
+                <th>Status</th>
+                <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var std in ViewData["questions"] as IList<QuestionViewModel>)
+            {
+                <tr>
+                <td>@std.Type</td>
+                <td>@std.Prio</td>
+                <td>@std.Level</td>
+                <td>@std.Title</td>
+                <td>@std.Status</td>
+                <td>@Html.ActionLink("Edit", "EditQuestion" , new { id = @std.Id} , new { @class="btn btn-primary" }) 
+                @if( Model.LoginInfo.AuthNumebr == 1 )
+                    @Html.ActionLink("Delete", "DeleteQuestion" , new { id = @std.Id} , new { @class="btn btn-primary" }) 
+                </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+        
+    }
+    else
+    {
+        <div class="row">
+            <div class="col">Login - Account : @Html.EditorFor(model => model.LoginInfo.Acc, "", new { htmlAttributes = new { @class = "form-control" } })</div>
+            <div class="col">Password : @Html.EditorFor(model => model.LoginInfo.Pwd, "", new { htmlAttributes = new { @class = "form-control" } })</div>
+        </div>
+        <br/>
+        <div class="row"><div class="col"><input type="submit" value="Login" class="btn btn-primary" /></div></div>
+    }
+        
+
+</div>
+}
+
+<div>
+    @if (  Model != null ){
+        @if ( Model.LoginInfo.AuthNumebr != 2 ) {
+            @Html.ActionLink("Add Question", "Question") 
+        }
+    }
+</div>
+<div>
+    @Html.ActionLink("Logout", "Logout") 
+</div>
