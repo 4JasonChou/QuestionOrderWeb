@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Workspace\\QuestionOrderWeb\\QuestionOrderWeb.csproj",
+      "projectUniqueName": "D:\\Workspace\\QuestionOrderWebGitHub\\QuestionOrderWeb.csproj",
       "projectName": "QuestionOrderWeb",
-      "projectPath": "D:\\Workspace\\QuestionOrderWeb\\QuestionOrderWeb.csproj",
+      "projectPath": "D:\\Workspace\\QuestionOrderWebGitHub\\QuestionOrderWeb.csproj",
       "packagesPath": "C:\\Users\\AdminChou\\.nuget\\packages\\",
-      "outputPath": "D:\\Workspace\\QuestionOrderWeb\\obj\\",
+      "outputPath": "D:\\Workspace\\QuestionOrderWebGitHub\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\AdminChou\\AppData\\Roaming\\NuGet\\NuGet.Config"

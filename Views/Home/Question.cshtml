@@ -39,21 +39,21 @@ function SubmitInputInfoCheck()
 <label for="Type" class="form-label">Type</label>
 @{
     List<SelectListItem> typeItems = (List<SelectListItem>)ViewBag.TypeItem;
-    @Html.DropDownListFor( m => m.Type , typeItems, "Choise Type", new { @class = "form-control" })
+    @Html.DropDownListFor( m => m.Type , typeItems, new { @class = "form-control" })
 }
 </div>
 <div class="mb-3">
 <label for="Level" class="form-label">Level</label>
 @{
     List<SelectListItem> levelItems = (List<SelectListItem>)ViewBag.LevelItem;
-    @Html.DropDownListFor( m => m.Level , levelItems, "Choise Level", new { @class = "form-control" })
+    @Html.DropDownListFor( m => m.Level , levelItems,  new { @class = "form-control" })
 }
 </div>
 <div class="mb-3">
 <label for="Priority" class="form-label">Priority</label>
 @{
     List<SelectListItem> prioItems = (List<SelectListItem>)ViewBag.PrioItem;
-    @Html.DropDownListFor( m => m.Prio , prioItems, "Choise Prio", new { @class = "form-control" })
+    @Html.DropDownListFor( m => m.Prio , prioItems, new { @class = "form-control" })
 }
 </div>
 <div class="mb-3">
@@ -68,7 +68,7 @@ function SubmitInputInfoCheck()
 <label for="Status" class="form-label">Status</label>
 @{
     List<SelectListItem> items = (List<SelectListItem>)ViewBag.RoleItem;
-    @Html.DropDownListFor( m => m.Status , items, "Choise Status", new { @class = "form-control" })
+    @Html.DropDownListFor( m => m.Status , items, new { @class = "form-control" })
 }
 </div>
 </form>

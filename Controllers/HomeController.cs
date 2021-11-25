@@ -15,10 +15,7 @@ public class HomeController : Controller
         _logger = logger;
     }
 
-    private UserModel QaUser = new UserModel(){ Acc =  "qa001", Pwd = "12345", AuthNumebr = 1, UserName = "QA" };
-    private UserModel RdUser = new UserModel(){ Acc =  "rd001", Pwd = "12345", AuthNumebr = 2, UserName = "RD" };
-    private UserModel PmUser = new UserModel(){ Acc =  "pm001", Pwd = "12345", AuthNumebr = 3, UserName = "PM" };
-    private UserModel SysUser = new UserModel(){ Acc =  "sys001", Pwd = "12345", AuthNumebr = 4, UserName = "Sys" };
+   
     static UserRuleHandler UserRules = new UserRuleHandler();
     static IList<QuestionUnitModel> QuestionList = new List<QuestionUnitModel>();
 
@@ -50,19 +47,8 @@ public class HomeController : Controller
 
     public UserModel CheckUser(string acc , string pwd)
     {
-
         QuestionList.Add( new QuestionUnitModel(){ Id = 0, Type = "0", Prio = "3", Level = "Warning", Title="001", Des="D001",Status="1"} );
-
-        if( acc.Equals(QaUser.Acc) && pwd.Equals(QaUser.Pwd) )
-            return QaUser;
-        else if( acc.Equals(RdUser.Acc) && pwd.Equals(RdUser.Pwd) )
-            return RdUser;
-        else if( acc.Equals(PmUser.Acc) && pwd.Equals(PmUser.Pwd) )
-            return PmUser;
-        else if( acc.Equals(SysUser.Acc) && pwd.Equals(SysUser.Pwd) )
-            return SysUser;
-        else 
-            return null;
+        return UserDataSet.Instance.GetUserInfo(acc,pwd);
     }
 
     public IActionResult Logout()

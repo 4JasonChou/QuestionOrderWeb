@@ -36,7 +36,7 @@
                 <td>@std.Title</td>
                 <td>@std.Status</td>
                 <td>@Html.ActionLink("Edit", "EditQuestion" , new { id = @std.Id} , new { @class="btn btn-primary" }) 
-                @if( Model.LoginInfo.AuthNumebr == 1 )
+                @if( Model.LoginInfo.AuthNumebr == 1 || Model.LoginInfo.AuthNumebr == 4)
                     @Html.ActionLink("Delete", "DeleteQuestion" , new { id = @std.Id} , new { @class="btn btn-primary" }) 
                 </td>
                 </tr>
