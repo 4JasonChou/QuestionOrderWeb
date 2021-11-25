@@ -11,3 +11,8 @@ Task1 :
 Task2 : GitHub Code.
 
 Task3 : 
+![image](https://github.com/4JasonChou/QuestionOrderWeb/blob/main/Artch.png)
+![image](https://github.com/4JasonChou/QuestionOrderWeb/blob/main/UI.png)
+
+Task4 : 
+![image](https://github.com/4JasonChou/QuestionOrderWeb/blob/main/Api.png)
